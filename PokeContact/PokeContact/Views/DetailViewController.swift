@@ -33,6 +33,9 @@ final class DetailViewController: UIViewController {
     private let nameTextField = UITextField().then {
         $0.borderStyle = .roundedRect
         $0.placeholder = "Name"
+        $0.autocapitalizationType = .none
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .no
         $0.keyboardType = .namePhonePad
     }
     
