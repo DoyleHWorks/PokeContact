@@ -19,14 +19,20 @@ final class ContactCell: UITableViewCell {
         $0.clipsToBounds = true
     }
     
-    private let nameLabel = UILabel().then {
-        $0.font = UIFont.monospacedSystemFont(ofSize: 16, weight: .regular)
-        $0.textColor = .label
-    }
-    
     private let phoneLabel = UILabel().then {
         $0.font = UIFont.monospacedDigitSystemFont(ofSize: 16, weight: .regular)
         $0.textColor = .label
+        $0.numberOfLines = 2
+        $0.textAlignment = .right
+        $0.lineBreakMode = .byTruncatingTail
+    }
+    
+    private let nameLabel = UILabel().then {
+        $0.font = UIFont.monospacedSystemFont(ofSize: 16, weight: .regular)
+        $0.textColor = .label
+        $0.numberOfLines = 2
+        $0.textAlignment = .left
+        $0.lineBreakMode = .byTruncatingTail
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -42,27 +48,31 @@ final class ContactCell: UITableViewCell {
     private func configureUI() {
         [
             profileImage,
-            nameLabel,
-            phoneLabel
+            phoneLabel,
+            nameLabel
         ].forEach { self.contentView.addSubview($0) }
         
         profileImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(35)
-            make.height.equalToSuperview().multipliedBy(0.75)
-            make.width.equalTo(profileImage.snp.height)
-        }
-        
-        nameLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(profileImage.snp.trailing).offset(15)
+            make.width.equalToSuperview().multipliedBy(0.16)
+            make.height.equalTo(profileImage.snp.width)
         }
         
         phoneLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(35)
+            make.width.equalToSuperview().multipliedBy(0.3)
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(profileImage.snp.trailing).offset(15)
+            make.width.equalToSuperview().multipliedBy(0.3)
+            make.trailing.lessThanOrEqualTo(phoneLabel.snp.leading)
         }
     }
+    
     // MARK: - Data Configuration
     func configure(with contact: Contact) {
         nameLabel.text = contact.fullName

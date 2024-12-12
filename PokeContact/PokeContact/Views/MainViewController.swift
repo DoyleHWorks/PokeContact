@@ -111,6 +111,6 @@ extension MainViewController: UITableViewDelegate {
     
     // Cell height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        view.bounds.width * 0.2
     }
 }
