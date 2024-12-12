@@ -7,7 +7,8 @@
 
 import UIKit
 
-class RoundImageView: UIImageView {
+/// Custom subclass for UIImageView.
+/// It applies corner radius and border attributes to make a circle border.
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = bounds.height / 2

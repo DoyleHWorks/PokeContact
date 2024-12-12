@@ -19,6 +19,7 @@ class DetailViewModel {
     
     var onSave: ((Contact) -> Void)?
     
+    // MARK: - Initialization
     init(coordinator: DetailCoordinatorProtocol?, repository: ContactRepository) {
         self.coordinator = coordinator
         self.repository = repository

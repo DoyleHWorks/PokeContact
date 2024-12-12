@@ -16,7 +16,7 @@ extension Contact {
         return NSFetchRequest<Contact>(entityName: "Contact")
     }
 
-    @NSManaged public var profileImage: String?
+    @NSManaged public var profileImage: String? // Profile Image URL
     @NSManaged public var fullName: String?
     @NSManaged public var phoneNumber: String?
 

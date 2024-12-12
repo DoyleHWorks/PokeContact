@@ -16,6 +16,7 @@ class MainViewModel {
     var contacts: [Contact] = []
     var onDataUpdated: (() -> Void)?
     
+    // MARK: - Initialization
     init(coordinator: MainCoordinatorProtocol, repository: ContactRepository) {
         self.coordinator = coordinator
         self.repository = repository
@@ -31,7 +32,7 @@ class MainViewModel {
         coordinator?.navigateToEditContact(contact: contacts[index])
     }
     
-    // MARK: - Data Operations
+    // MARK: - Read Contacts
     func fetchContacts() {
         do {
             contacts = try repository.fetchContacts()
@@ -42,6 +43,7 @@ class MainViewModel {
         }
     }
     
+    // MARK: - Delete Contact
     func deleteContact(at index: Int) {
         guard index < contacts.count else { return }
         let contact = contacts[index]

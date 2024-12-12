@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 import Then
 
-class ContactCell: UITableViewCell {
+/// Custom cell view class for MainViewModel's TableView.
+/// Utilizes ImageLoader to load image with given URL per contact.
     static let identifier = "ContactCell"
     
     private let profileImage = RoundImageView().then {

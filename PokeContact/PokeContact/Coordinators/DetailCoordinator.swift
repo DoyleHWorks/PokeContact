@@ -16,6 +16,7 @@ class DetailCoordinator {
     private let navigationController: UINavigationController
     private let contactRepository: ContactRepository
     
+    // MARK: - Initialization
     init(
         navigationController: UINavigationController,
         contactRepository: ContactRepository
@@ -24,12 +25,14 @@ class DetailCoordinator {
         self.contactRepository = contactRepository
     }
     
+    // MARK: - Coordination
+    // Create DetailViewModel, DetailViewController Instances with ContactMode
     func start(with mode: ContactMode) {
+        
         let detailViewModel = DetailViewModel(
             coordinator: self,
             repository: contactRepository
         )
-        
         let detailViewController = DetailViewController(
             viewModel: detailViewModel,
             mode: mode
@@ -39,12 +42,14 @@ class DetailCoordinator {
     }
 }
 
+// MARK: - Navigation
 extension DetailCoordinator: DetailCoordinatorProtocol {
     func navigateBack() {
         navigationController.popViewController(animated: true)
     }
 }
 
+// MARK: - Coordiantor Default Method (not-in-use)
 extension DetailCoordinator: Coordinator {
     func start() {}
 }

@@ -17,6 +17,7 @@ class MainCoordinator: Coordinator {
     private let navigationController: UINavigationController
     private let contactRepository: ContactRepository
     
+    // MARK: - Initialization
     init(
         navigationController: UINavigationController,
         contactRepository: ContactRepository
@@ -25,7 +26,10 @@ class MainCoordinator: Coordinator {
         self.contactRepository = contactRepository
     }
     
-    internal func start() {
+    // MARK: - Coordination
+    // Create MainViewModel, MainViewController Instances
+    func start() {
+        
         let viewModel = MainViewModel(
             coordinator: self,
             repository: contactRepository
@@ -35,6 +39,8 @@ class MainCoordinator: Coordinator {
     }
 }
 
+// MARK: - Navigation
+// Create DetailCoordinator Instance (with Add / Edit ContactMode)
 extension MainCoordinator: MainCoordinatorProtocol {
     func navigateToAddContact() {
         let detailCoordinator = DetailCoordinator(

@@ -11,11 +11,13 @@ class ContactRepository {
     private(set) var context: NSManagedObjectContext
     private let pokemonFetcher: PokemonFetcher
     
+    // MARK: - Initialization
     init(context: NSManagedObjectContext, pokemonFetcher: PokemonFetcher) {
         self.context = context
         self.pokemonFetcher = pokemonFetcher
     }
     
+    // MARK: - Data Operations
     func fetchContacts() throws -> [Contact] {
         let fetchRequest: NSFetchRequest<Contact> = Contact.fetchRequest()
         fetchRequest.includesPendingChanges = false
@@ -42,7 +44,7 @@ class ContactRepository {
             throw error
         }
     }
-
+    
     func addContact(name: String, phone: String, imageURL: String) throws -> Contact {
         print("ContactRepository: Adding contact with name: \(name), phone: \(phone), imageURL: \(imageURL)")
 
@@ -70,7 +72,7 @@ class ContactRepository {
             throw error
         }
     }
-
+    
     func updateContact(_ contact: Contact, withName name: String, phone: String, andImageURL imageURL: String) throws {
         print("ContactRepository: Updating contact with name: \(name), phone: \(phone), imageURL: \(imageURL)")
         
@@ -92,6 +94,7 @@ class ContactRepository {
         try context.save()
     }
     
+    // Currently not-in-use
     func clearAllContacts() throws {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Contact.fetchRequest()
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

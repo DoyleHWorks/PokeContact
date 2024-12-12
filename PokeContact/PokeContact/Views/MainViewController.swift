@@ -70,6 +70,7 @@ class MainViewController: UIViewController, MainViewModelDelegate {
     }
     
     // MARK: - Actions
+    /// There are more actions in UITableViewDelegate section below.
     @objc private func didTapAdd() {
         viewModel.didTapNavigate()
     }
@@ -77,10 +78,12 @@ class MainViewController: UIViewController, MainViewModelDelegate {
 
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
+    // Number of rows in section (no section currently in-use)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.contacts.count
     }
     
+    // Assign data per cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactCell.identifier, for: indexPath) as? ContactCell else {
             return UITableViewCell()
@@ -93,18 +96,20 @@ extension MainViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
+    // Select to edit
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let contact = viewModel.contacts[indexPath.row]
         viewModel.didSelectContact(at: indexPath.row)
     }
     
+    // Swipe to delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             viewModel.deleteContact(at: indexPath.row)
         }
     }
     
+    // Cell height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
     }

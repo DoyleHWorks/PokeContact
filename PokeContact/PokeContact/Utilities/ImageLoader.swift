@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageLoader {
+/// Loads an image from the given URL and passes it to the completion handler.
     /// Loads an image from the given URL and passes it to the completion handler.
     static func loadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
         guard let imageURL = URL(string: url) else {

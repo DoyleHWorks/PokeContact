@@ -239,6 +239,7 @@ class DetailViewController: UIViewController {
     }
 }
 
+// MARK: - Communication with DetailViewModel
 extension DetailViewController: DetailViewModelDelegate {
     func didSaveContact() {
         print("DetailViewController: Contact saved successfully..")
