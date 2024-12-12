@@ -9,7 +9,7 @@ import Foundation
 
 protocol MainViewModelDelegate: AnyObject {}
 
-class MainViewModel {
+final class MainViewModel {
     private weak var coordinator: MainCoordinatorProtocol?
     weak var delegate: MainViewModelDelegate?
     private let repository: ContactRepository

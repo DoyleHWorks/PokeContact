@@ -14,7 +14,7 @@ enum ContactMode {
     case edit(contact: Contact)
 }
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     private let viewModel: DetailViewModel
     private var mode: ContactMode
     private var currentImageURL: String = ""

@@ -12,7 +12,7 @@ protocol MainCoordinatorProtocol: AnyObject {
     func navigateToEditContact(contact: Contact)
 }
 
-class MainCoordinator: Coordinator {
+final class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
     private let contactRepository: ContactRepository

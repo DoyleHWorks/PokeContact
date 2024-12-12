@@ -11,7 +11,7 @@ protocol DetailCoordinatorProtocol: AnyObject {
     func navigateBack()
 }
 
-class DetailCoordinator {
+final class DetailCoordinator {
     var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
     private let contactRepository: ContactRepository

@@ -11,6 +11,7 @@ import Then
 
 /// Custom cell view class for MainViewModel's TableView.
 /// Utilizes ImageLoader to load image with given URL per contact.
+final class ContactCell: UITableViewCell {
     static let identifier = "ContactCell"
     
     private let profileImage = RoundImageView().then {

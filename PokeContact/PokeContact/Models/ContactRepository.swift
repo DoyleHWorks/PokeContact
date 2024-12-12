@@ -7,7 +7,7 @@
 
 import CoreData
 
-class ContactRepository {
+final class ContactRepository {
     private(set) var context: NSManagedObjectContext
     private let pokemonFetcher: PokemonFetcher
     

@@ -12,7 +12,7 @@ protocol DetailViewModelDelegate: AnyObject {
     func didFailWithError(_ error: Error)
 }
 
-class DetailViewModel {
+final class DetailViewModel {
     weak var coordinator: DetailCoordinatorProtocol?
     weak var delegate: DetailViewModelDelegate?
     private(set) var repository: ContactRepository

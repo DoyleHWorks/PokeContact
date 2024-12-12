@@ -7,7 +7,7 @@
 
 import Alamofire
 
-class PokemonFetcher {
+final class PokemonFetcher {
     private let baseURL = "https://pokeapi.co/api/v2/pokemon"
 
     /// Fetches a random Pokémon sprite URL synchronously-like.
